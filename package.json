@@ -1,0 +1,31 @@
+{
+  "name": "fastify-chalk",
+  "version": "0.0.1",
+  "description": "Colorful logging for fastify",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwalski/fastify-chalk.git"
+  },
+  "keywords": [
+    "fastify",
+    "chalk",
+    "color",
+    "terminal",
+    "logger"
+  ],
+  "author": "Gi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kwalski/fastify-chalk/issues"
+  },
+  "homepage": "https://github.com/kwalski/fastify-chalk#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "fastify-plugin": "^1.2.0",
+    "moment": "^2.22.2"
+  }
+}
