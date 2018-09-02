@@ -32,7 +32,7 @@ fastify.listen(8080, (err) => {
   fastify.fatal('This is fatal!');
   
   //or use chalk directly
-  console.log(fastify.chalk.green('using fastify.chalk.red()'));
+  console.log(fastify.chalk.green('console.log(fastify.chalk.green( ... ))'));
 });
 ```
 
