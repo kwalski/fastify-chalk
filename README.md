@@ -30,7 +30,7 @@ fastify.listen(8080, (err) => {
   fastify.info('This is an info line');
   fastify.warn('This is a warning line');
   fastify.error('This is an error line');
-  fastify.fatal('This is fatal line');
+  fastify.fatal('This is a fatal line');
   
   // or use chalk directly
   console.log(fastify.chalk.green('console.log(fastify.chalk.green( ... ))'));
