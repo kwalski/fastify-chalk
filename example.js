@@ -1,20 +1,9 @@
 const fastify = require('fastify')();
 
-fastify.register(require('./index.js'), {disable:false});
+fastify.register(require('fastify-chalk'))
+// or provide options object
+// fastify.register(require('fastify-chalk'), {disabled:false});
 
-//you can override the following properties in options object
-options = {
-  time: true,
-  timeFormat: 'HH:mm:ss',
-  level:'all',
-  trace:'#666666',
-  debug:'#7b1fa2',
-  info:'#0000ff',
-  warn:'#ff4400',
-  error:'#aa0000',
-  fatal:'#ff0000',
-  disable:false
-};
 
 
 fastify.listen(8080, (err) => {

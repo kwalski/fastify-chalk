@@ -31,7 +31,7 @@ const defaultOptions = {
   warn:'#ff4400',
   error:'#aa0000',
   fatal:'#ff0000',
-  disable:false
+  disabled:false
 };
 
 function plugin (fastify, opts, next) {
