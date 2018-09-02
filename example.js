@@ -19,14 +19,14 @@ options = {
 
 fastify.listen(8080, (err) => {
   //use the following shortands
-  fastify.trace('Server is running');
-  fastify.debug('Server is running');
-  fastify.info('Server is running');
-  fastify.warn('Server is running');
-  fastify.error('Server is running');
-  fastify.fatal('boom!');
+  fastify.trace('This is a trace line');
+  fastify.debug('This is a debug line');
+  fastify.info('This is an info line');
+  fastify.warn('This is a warning line');
+  fastify.error('This is an error line');
+  fastify.fatal('This is fatal!');
   
   //or use chalk directly
-  console.log(fastify.chalk.red('using fastify.chalk.red()'));
+  console.log(fastify.chalk.green('using fastify.chalk.red()'));
 });
 
