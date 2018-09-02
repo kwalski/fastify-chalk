@@ -30,7 +30,7 @@ fastify.listen(8080, (err) => {
   fastify.info('This is an info line');
   fastify.warn('This is a warning line');
   fastify.error('This is an error line');
-  fastify.fatal('This is fatal!');
+  fastify.fatal('This is fatal line');
   
   // or use chalk directly
   console.log(fastify.chalk.green('console.log(fastify.chalk.green( ... ))'));
@@ -43,10 +43,19 @@ fastify.listen(8080, (err) => {
 
 ## API
 
+You get the following functions
+
+* fastify.trace()
+* fastify.debug()
+* fastify.info()
+* fastify.warn()
+* fastify.error()
+* fastify.fatal()
+
 You can override the following default options
 
 ```
-options = {
+var options = {
   time: true,
   timeFormat: 'HH:mm:ss', //moment.js time format
   level:'all', //all, trace, debug, info, warn, error, fatal
@@ -67,4 +76,6 @@ options = {
       fatal: '\u2620'
     }
 }; 
+
+fastify.register(require('fastify-chalk'), options);
 ```
