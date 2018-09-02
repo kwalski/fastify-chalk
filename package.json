@@ -1,6 +1,6 @@
 {
   "name": "fastify-chalk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Colorful logging for fastify",
   "main": "index.js",
   "scripts": {
