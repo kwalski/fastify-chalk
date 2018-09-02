@@ -1,8 +1,8 @@
 const fastify = require('fastify')();
 
-fastify.register(require('fastify-chalk'))
+//fastify.register(require('./index'))
 // or provide options object
-// fastify.register(require('fastify-chalk'), {disabled:false});
+ fastify.register(require('./index'), {disabled:false, symbols:{error:'ERR'}});
 
 
 
@@ -13,7 +13,7 @@ fastify.listen(8080, (err) => {
   fastify.info('This is an info line');
   fastify.warn('This is a warning line');
   fastify.error('This is an error line');
-  fastify.fatal('This is fatal line');
+  fastify.fatal('This is a fatal line');
   
   //or use chalk directly
   console.log(fastify.chalk.green('console.log(fastify.chalk.green( ... ))'));

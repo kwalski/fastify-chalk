@@ -4,9 +4,9 @@ A colorful terminal logger using [chalk](https://github.com/chalk/chalk) for [Fa
 
 ## Features
 
-* Displays time.
-* Colorful outputs.
-* Logging levels: all, trace, debug, info, error, fatal
+* Displays time
+* Colorful outputs and shorthands
+* Logging levels: all, trace, debug, info, warn, error, fatal
 
 ## Install
 
@@ -43,19 +43,28 @@ fastify.listen(8080, (err) => {
 
 ## API
 
-You can override the following properties in options object
+You can override the following default options
 
 ```
 options = {
   time: true,
   timeFormat: 'HH:mm:ss', //moment.js time format
-  level:'all', //eg., error will show only error and above (fatal)
-  trace:'#666666',
-  debug:'#7b1fa2',
-  info:'#0000ff',
+  level:'all', //all, trace, debug, info, warn, error, fatal
+  trace: '#455a64',
+  debug:'#d500f9',
+  info: '#0000ff',
   warn:'#ff4400',
-  error:'#aa0000',
-  fatal:'#ff0000',
-  disabled:false //true to disable logging
+  error:'#d50000', //change color of error line
+  fatal:'#aa0000',
+  disabled:false, //true to disable logging
+  symbols: 
+    {
+      trace: '\u26b2',
+      debug: '\u2689',
+      info: '\u2139',
+      warn: '\u26A0',
+      error: '\u2a02', //you can override error symbol, eg: 'ERR'
+      fatal: '\u2620'
+    }
 }; 
 ```

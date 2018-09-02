@@ -13,31 +13,33 @@ const levels = {
 };
 
 const symbols={
-  trace: '\u270F',
-  debug: '\u279C',
+  trace: '\u26b2',
+  debug: '\u2689',
   info: '\u2139',
   warn: '\u26A0',
-  error: '\u2717',
-  fatal: '\u2718'
+  error: '\u2a02',
+  fatal: '\u2620'
 };
 
 const defaultOptions = {
   time: true,
   timeFormat: 'HH:mm:ss',
   level: 'all',
-  trace: '#666666',
-  debug:'#7b1fa2',
+  trace: '#455a64',
+  debug:'#d500f9',
   info: '#0000ff',
   warn:'#ff4400',
-  error:'#aa0000',
-  fatal:'#ff0000',
+  error:'#d50000',
+  fatal:'#aa0000',
   disabled:false
 };
 
 function plugin (fastify, opts, next) {
 
   const options = Object.assign(defaultOptions, opts);
-  
+    
+  const symb = options.symbols?Object.assign(symbols,options.symbols):symbols;
+    
   function trace () {
     if (levels[options.level] > 10) return;
     log('trace', arguments);
@@ -70,10 +72,12 @@ function plugin (fastify, opts, next) {
 
   function log (type, text) {
     if(options.disabled) return;
-    const time = options.time ? momment().format(options.timeFormat) + ' ': '';
+    const time = options.time ? momment().format(options.timeFormat): '';
     console.log(
         chalk.hex(options[type])(time),
-        chalk.hex(options[type]).bold(symbols[type]+ ' '+ concat(text)));
+        chalk.hex(options[type]).bold(symb[type]),'',
+        chalk.hex(options[type]).bold(concat(text))
+    );
   }
 
   function concat(args) {
