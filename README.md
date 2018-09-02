@@ -39,7 +39,7 @@ fastify.listen(8080, (err) => {
 
 ### This will output
 
-![Example Output](example.png){: width=300px height=120px}
+![Example Output](example.png){:width=300px height=120px}
 
 
 ## API
