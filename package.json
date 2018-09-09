@@ -26,7 +26,8 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "fastify-plugin": "^1.2.0",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "sonic-boom": "^0.6.1"
   },
   "devDependencies": {
     "fastify": "^1.11.1"

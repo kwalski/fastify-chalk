@@ -1,6 +1,9 @@
 const fp = require('fastify-plugin')
 const momment = require('moment');
 const chalk = require('chalk');
+ 
+const SonicBoom = require('sonic-boom')
+
 
 const levels = {
   all:0,
@@ -23,7 +26,7 @@ const symbols={
 
 const defaultOptions = {
   time: true,
-  timeFormat: 'HH:mm:ss',
+  timeFormat: 'HH:mm:ss.SSS',
   level: 'all',
   trace: '#455a64',
   debug:'#d500f9',
@@ -31,15 +34,19 @@ const defaultOptions = {
   warn:'#ff4400',
   error:'#d50000',
   fatal:'#aa0000',
-  disabled:false
+  disabled:false,
+  outStream: process.stdout.fd
 };
 
 function plugin (fastify, opts, next) {
 
   const options = Object.assign(defaultOptions, opts);
+  
     
   const symb = options.symbols?Object.assign(symbols,options.symbols):symbols;
-    
+  
+  const sonic = new SonicBoom(options.outStream);
+
   function trace () {
     if (levels[options.level] > 10) return;
     log('trace', arguments);
@@ -71,12 +78,10 @@ function plugin (fastify, opts, next) {
   }
 
   function log (type, text) {
-    if(options.disabled) return;
     const time = options.time ? momment().format(options.timeFormat): '';
-    console.log(
-        chalk.hex(options[type])(time),
-        chalk.hex(options[type]).bold(symb[type]),'',
-        chalk.hex(options[type]).bold(concat(text))
+    sonic.write(
+        chalk.dim(time) + ' '+
+        chalk.hex(options[type]).bold(symb[type] + ' ' + concat(text))+'\n'
     );
   }
 
@@ -94,7 +99,8 @@ function plugin (fastify, opts, next) {
   };
 
   Object.keys(logger).forEach(k => {
-    fastify.decorate(k, logger[k]);
+    fastify.decorate(k, options.disabled?()=>{}
+                     :logger[k]);
   });
 
   fastify.decorate('chalk',chalk);

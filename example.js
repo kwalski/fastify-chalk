@@ -1,8 +1,15 @@
 const fastify = require('fastify')();
+const fs = require('fs');
 
 //fastify.register(require('./index'))
 // or provide options object
- fastify.register(require('./index'), {disabled:false, symbols:{error:'ERR'}});
+ fastify.register(require('./index'), {
+     disabled:false, 
+     symbols:{
+         error:'ERR', 
+     },
+    // outStream:'./log-file.txt'
+ });
 
 
 

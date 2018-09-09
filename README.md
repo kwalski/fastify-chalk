@@ -7,6 +7,7 @@ A colorful terminal logger using [chalk](https://github.com/chalk/chalk) for [Fa
 * Displays time
 * Colorful outputs and shorthands
 * Logging levels: all, trace, debug, info, warn, error, fatal
+* From v0.1.2 on it uses faster streaming with [sonic-boom](https://github.com/mcollina/sonic-boom)
 
 ## Install
 
@@ -57,7 +58,7 @@ You can override the following default options
 ```
 var options = {
   time: true,
-  timeFormat: 'HH:mm:ss', //moment.js time format
+  timeFormat: 'HH:mm:ss.SSS', //moment.js time format
   level:'all', //all, trace, debug, info, warn, error, fatal
   trace: '#455a64',
   debug:'#d500f9',
@@ -66,15 +67,16 @@ var options = {
   error:'#d50000', //change color of error line
   fatal:'#aa0000',
   disabled:false, //true to disable logging
-  symbols: 
+  symbols: // you can override default symbol with string
     {
       trace: '\u26b2',
       debug: '\u2689',
       info: '\u2139',
       warn: '\u26A0',
-      error: '\u2a02', //you can override error symbol, eg: 'ERR'
+      error: '\u2a02', // eg: 'ERR'
       fatal: '\u2620'
-    }
+    },
+  outStream: process.stdout.fd // Specify log path './Log-File-Path.log'
 }; 
 
 fastify.register(require('fastify-chalk'), options);
